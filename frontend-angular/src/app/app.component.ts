@@ -6,6 +6,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +23,18 @@ export class AppComponent implements OnInit {
   title = 'angular-routing';
   footerUrl = 'https://www.ganatan.com';
   footerLink = 'www.ganatan.com';
-
+  isLoggedIn = false;
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: object) {
+    @Inject(PLATFORM_ID) private platformId: object,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
-
+    if(!this.isLoggedIn) {
+      this.router.navigate(['auth/login']);
+    }
     if (isPlatformBrowser(this.platformId)) {
       const navMain = this.document.getElementById('navbarCollapse');
       if (navMain) {
@@ -41,5 +46,4 @@ export class AppComponent implements OnInit {
       }
     }
   }
-
 }

@@ -1,0 +1,49 @@
+.form-login {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    margin: auto;
+    justify-content: center;
+    background: #ffffff;
+}
+
+button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep{
+  background-color: transparent !important;
+  border: 1px solid rgba(0,0,0,0.26);
+  color: rgba(0,0,0,0.26)!important;
+}
+
+.mat-button-wrapper {
+    color: rgba(0,0,0,0.26);
+}
+.header-logo img {
+    max-width: 60%;
+}
+
+.spinner-wrapper {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(50, 50, 50, 0.1);
+}
+.main-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+button {
+  background-color: #3cba58!important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+

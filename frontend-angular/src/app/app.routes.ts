@@ -7,9 +7,9 @@ export const routes: Routes = [
   { path: '', component: HomeComponent, },
 
   {
-    path: 'prism',
-    loadComponent: () => import('./features/tutorials/example-prism/tutorial.component')
-      .then(mod => mod.TutorialComponent)
+    path: 'auth/login',
+    loadComponent: () => import('./auth/login/login.component')
+      .then(mod => mod.LoginComponent)
   },
   {
     path: 'continents',
