@@ -6,7 +6,10 @@
     justify-content: center;
     background: #ffffff;
 }
-
+a {
+  color: blue;
+  text-decoration: underline;
+}
 button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep{
   background-color: transparent !important;
   border: 1px solid rgba(0,0,0,0.26);

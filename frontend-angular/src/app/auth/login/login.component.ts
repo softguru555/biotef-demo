@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule for NgIf
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login/login.service';
+import { RouterModule, Routes } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -14,7 +16,8 @@ import { LoginService } from '../../services/login/login.service';
     MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -23,7 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   FormGroup!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
   ) { 
     
   }

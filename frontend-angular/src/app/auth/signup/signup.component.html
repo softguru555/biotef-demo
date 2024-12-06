@@ -1,1 +1,92 @@
-<p>signup works!</p>
+<section id="signup">
+    <div class="grid grid-rows-2 gap-2">
+        <div class="row-span-1 h-5">
+            <img src="/assets/images/Biotef-logo.svg" alt="Biotef" height="50">
+        </div>
+        <div class="col-lg-12" [formGroup]="signupFormGroup">
+            <mat-card class="bio-elevation-z0 mt-2 mb-5 h-100">
+                <mat-card-header>
+                    <mat-card-title>Sign Up for Biotef</mat-card-title>
+                    <mat-card-subtitle>Please fill out all the fields below to create your Biotef account</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+
+                    <!-- Company Information -->
+                    <mat-card class="bio-elevation-z3 mt-2 mb-3">
+                        <mat-card-header>
+                            <mat-card-title>Company Information</mat-card-title>
+                            <mat-card-subtitle>Please fill out all the fields below regarding your company</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="row mx-0">
+                                <div class="col-md-3 mt-2">
+                                    <mat-form-field>
+                                        <mat-label>Company</mat-label>
+                                        <input matInput formControlName="billCompanyName" placeholder="Company" maxlength="60" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                    <mat-form-field>
+                                        <mat-label>Contact</mat-label>
+                                        <input matInput formControlName="billContactName" placeholder="Contact" maxlength="60" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                    <mat-form-field>
+                                        <mat-label>Address</mat-label>
+                                        <input matInput formControlName="billAddress" placeholder="Contact" maxlength="60" required>
+                                    </mat-form-field>
+                                    <!-- <app-google-autocomplete (setAddress)="getAddress($event)" [addressInput]="billAddress" [formGroup]="billingAddressFormGroup" adressType="address" type="billing"></app-google-autocomplete> -->
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                    <mat-form-field>
+                                        <mat-label>Email</mat-label>
+                                        <input matInput formControlName="billEmail" placeholder="Email" maxlength="100" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                    <mat-form-field>
+                                        <mat-label>Phone</mat-label>
+                                        <input matInput formControlName="billPhone" placeholder="Phone" mask="000-000-0000" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <div class="row mt-4">
+                        <!-- Password -->
+                        <div class="col-md-6">
+                            <mat-card class="bio-elevation-z3 h-100">
+                                <mat-card-header>
+                                    <mat-card-title>Password</mat-card-title>
+                                    <mat-card-subtitle>Password must contain minimum 10 characters</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <div class="row">
+                                        <div class="col-md-6 mt-2">
+                                            <mat-form-field>
+                                                <mat-label>Password</mat-label>
+                                                <input matInput formControlName="password" placeholder="Password" type="password" maxlength="20" required>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <mat-form-field>
+                                                <mat-label>Confirm Password</mat-label>
+                                                <input matInput formControlName="confirmPassword" placeholder="Confirm Password" type="password" maxlength="20" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                        <!-- Tax Exempt Information -->
+                    </div>
+                </mat-card-content>
+
+                <button mat-flat-button color="primary" class="me-3 mt-2 float-end " type="button" [disabled]="!signupFormGroup.valid || this.loading" signUp>Complete Sign Up</button>
+            </mat-card>
+        </div>
+    </div>
+</section>

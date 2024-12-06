@@ -12,9 +12,9 @@ export const routes: Routes = [
       .then(mod => mod.LoginComponent)
   },
   {
-    path: 'continents',
-    loadComponent: () => import('./features/general/continent/item.component')
-      .then(mod => mod.ItemComponent)
+    path: 'auth/signup',
+    loadComponent: () => import('./auth/signup/signup.component')
+      .then(mod => mod.SignupComponent)
   },
   {
     path: 'continents/:id',
