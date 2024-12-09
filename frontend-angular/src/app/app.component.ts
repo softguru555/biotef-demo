@@ -7,14 +7,13 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { Router, RouterModule, Routes } from '@angular/router';
-
 @Component({
   selector: 'app-root',
   imports: [
     CommonModule,
     RouterOutlet,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -32,6 +31,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const user = window.localStorage.getItem('userInfo');
+    console.log('user :>> ', user);
+    if(user) {
+      this.isLoggedIn = true;
+    }
     if(!this.isLoggedIn) {
       this.router.navigate(['auth/login']);
     }

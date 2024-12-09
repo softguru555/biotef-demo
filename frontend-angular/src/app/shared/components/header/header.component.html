@@ -1,41 +1,133 @@
-<header class="navbar navbar-expand-lg navbar-dark fixed-top nga-navbar">
-  <nav class="container" aria-label="Main navigation">
-    <a routerLink="/" class="navbar-brand" alt="Accueil" >
-      <img src="./assets/params/images/logo/ganatan-logo.png" srcset="./assets/params/images/logo/ganatan-logo.png,
-      ./assets/params/images/logo/ganatan-logo@2x.png 2x" width="25" height="25" alt="Ganatan Logo">
-      <span class="nga-logo mx-1" aria-label="Ganatan">ganatan</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link nga-nav-link" aria-current="page" routerLink="/">
-            <i class="fab fa-angular me-1"></i>Features</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link nga-nav-link" aria-current="page" routerLink="/about">
-            <i class="far fa-question-circle me-1"></i>About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nga-nav-link" aria-current="page" routerLink="/contact">
-            <i class="fas fa-envelope me-1"></i>Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nga-nav-link" aria-current="page" href="https://github.com/ganatan">
-            <i class="fab fa-github me-1"></i>Github </a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <button type="button" class="btn btn-sm nga-btn-navbar me-2" routerLink="/signup"><i
-            class="fas fa-user-plus me-2"></i>Sign up</button>
-        <button type="button" class="btn btn-sm btn-outline-light me-2" routerLink="/login"><i
-            class="fas fa-sign-in-alt me-2"></i>Login</button>
-      </form>
-    </div>
-  </nav>
-</header>
+<section id="header">
+  <div class="container">
+      <div class="row mx-0">
+          <div class="col-lg-2 col-md-3 col-sm-2 header-logo my-3">
+              <img class="d-block" src="/assets/images/Biotef-logo.svg?quality=90" alt="Biotef" width="162" height="50" routerLink="/orders">
+              <ng-template #userLogo>
+                  <img class="d-block" src="/assets/images/Biotef-logo.svg?quality=90" alt="Biotef" width="162" height="50" routerLink="/orders">
+              </ng-template>
+          </div>
+          <div class="col-lg-9 col-md-8 col-sm-9 header-nav my-3 text-center flex gap-4">
+              <!-- Admin -->
+              <button mat-button routerLink="/orders/admin" >Orders</button>
+              <button mat-button routerLink="/account" >Accounts</button>
+              <!-- User -->
+              <button mat-button routerLink="/account">My Account</button>
+              <button mat-button routerLink="/orders">My Orders</button>
+              <button mat-button routerLink="/checkout/product" >My Products</button>
+              <button mat-button routerLink="/checkout/product">Products</button>
+              <button mat-button routerLink="/orders/production">Production Line</button>
+              <button mat-button routerLink="/settings/admin-users">Admin Users</button>
+
+
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 header-buttons my-3">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Biotef Menu" class="float-end">
+                  <mat-icon>menu</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                  <button mat-menu-item routerLink="/account">
+                      <mat-icon>account_circle</mat-icon>
+                      <span>Account</span>
+                  </button>
+
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/orders/admin"
+                  >
+                      Orders
+                  </button>
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/account/admin"
+                  >
+                      Accounts
+                  </button>
+                  <button
+                      class="mobile-only"
+                      mat-menu-item
+                      [matMenuTriggerFor]="settings"
+                  >
+                      Settings
+                  </button>
+                  <mat-menu #settings="matMenu">
+                      <button mat-menu-item routerLink="/settings/math">
+                          <mat-icon>price_change</mat-icon>
+                          <span>Math Calc.</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/diesize">
+                          <mat-icon>photo_size_select_small</mat-icon>
+                          <span>Die Sizes</span>
+
+                      </button>
+                      <button mat-menu-item routerLink="/settings/material">
+                          <mat-icon>gradient</mat-icon>
+                          <span>Materials</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/coating">
+                          <mat-icon>tonality</mat-icon>
+                          <span>Coatings</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/shape">
+                      <mat-icon>format_shapes</mat-icon>
+                      <span>Shapes</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/label-placement">
+                      <mat-icon>label</mat-icon>
+                      <span>Label Plac.</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/core-size">
+                      <mat-icon>photo_size_select_actual</mat-icon>
+                      <span>Core Size</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/outside-diameter">
+                      <mat-icon>settings_backup_restore</mat-icon>
+                      <span>Outside Di.</span>
+                      </button>
+                      <button mat-menu-item routerLink="/settings/copy-position">
+                      <mat-icon>settings_overscan</mat-icon>
+                      <span>Copy Posi.</span>
+                      </button>
+                  </mat-menu>
+                  <!-- User -->
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/account"
+                      >
+                      My Account
+                  </button>
+                  <button class="mobile-only"
+                      mat-menu-item routerLink="/orders"
+                      >
+                      My Orders
+                  </button>
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/checkout/product"
+                      >
+                      My Products
+                  </button>
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/checkout/product"
+                      >
+                      Products
+                  </button>
+                  <button class="mobile-only"
+                      mat-menu-item
+                      routerLink="/orders/production"
+                     >
+                      Admin Users
+                  </button>
+
+                  <!-- For now condition is changed based on specific superAdmin / e-mail wise :
+                  *ngIf="user?.role === 'admin' && user?.isSuperAdmin && (user.email == 'zach@biotef.com' || user.email == 'scott@biotef.com' || user.email == 'todd@biotef.com')" -->
+                  <button mat-menu-item (click)="logOut()">
+                      <mat-icon>logout</mat-icon>
+                      <span>Logout</span>
+                  </button>
+              </mat-menu>
+          </div>
+      </div>
+  </div>
+</section>

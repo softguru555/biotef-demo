@@ -1,0 +1,25 @@
+.spinner-wrapper {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.1);
+}
+
+img {
+    max-width: 10%;
+}
+
+.header-logo {
+    justify-items: center;
+}
+
+button.float-end {
+    background-color: #57e776;
+    color: aliceblue;
+}

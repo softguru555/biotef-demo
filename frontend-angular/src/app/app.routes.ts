@@ -17,6 +17,11 @@ export const routes: Routes = [
       .then(mod => mod.SignupComponent)
   },
   {
+    path: 'account',
+    loadComponent: () => import('./account/account.component')
+      .then(mod => mod.AccountComponent)
+  },
+  {
     path: 'continents/:id',
     loadComponent: () => import('./features/general/continent-form/item.component')
       .then(mod => mod.ItemComponent)

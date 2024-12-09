@@ -1,41 +1,54 @@
 const db = require("../models");
 const User = db.user;
+const Company = db.company;
+const authHelper = require("../helpers/auth.helper.js");
 // Create and Save a new Tutorial
-exports.create = (req, res) => {
-  // Validate request
-  //   if (!req.body.title) {
-  //     res.status(400).send({ message: "Content can not be empty!" });
-  //     return;
-  //   }
 
-  // Create a Tutorial
-  const userInfo = User.find({ email: req.body.email });
+exports.create = async (req, res) => {
+  console.log("req.body :>> ", req.body);
+  const userInfo = await authHelper.emailExists(req.body.email);
   if (userInfo) {
-    res.status(500).send({ message: "User already exists" });
+    res.status(500).send({ message: "This user already exists." });
     return;
   }
-  const userData = new User({
-    companyId: 1,
-    uuid: "c303ed18-8b81-4f0b-b5cd-98b211c82d59",
-    role: "admin",
-    name: "Benjamin",
-    email: "softguru555@gmail.com",
-    phone: "1231231233",
-    password: "123456789",
-    status: 1,
-  });
-  console.log("userData :>> ", userData);
-  // Save Tutorial in the database
-  userData
-    .save()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Tutorial.",
-      });
-    });
+  let company = authHelper.buildCompany(req);
+  const newCompany = await authHelper.createCompany(company);
+  console.log("newCompany :>> ", newCompany);
+  //Company Approver
+  //   var shippingAddress;
+  //   if (req.body.shippingAddress) {
+  //     const shippingAddressData = req.body.shippingAddress;
+  //     shippingAddressData.companyId = newCompany.id;
+  //     shippingAddress = await CompanyAddress.save(shippingAddressData);
+  //   } else {
+  //     const address = authHelper.buildShippingAddress(req, newCompany);
+  //     shippingAddress = await CompanyAddress.save(address);
+  //   }
+  //   if (req.body.shippingInfo) {
+  //     const shippingInfo = req.body.shippingInfo;
+  //     await CompanyAddress.update(
+  //       {
+  //         coreSize: shippingInfo.coreSize,
+  //         defaultOD: shippingInfo.defaultOD,
+  //         copyPosition: shippingInfo.copyPosition,
+  //       },
+  //       {
+  //         where: {
+  //           id: shippingAddress.id,
+  //         },
+  //       }
+  //     );
+  //   }
+
+  //User
+  const user = authHelper.buildUser(req, newCompany);
+  console.log("user :>> ", user);
+  const newUser = await authHelper.createUser(user);
+  const returnData = [];
+  returnData.companyId = newCompany.id;
+  returnData.user = newUser;
+  console.log("returnData :>> ", returnData);
+  res.status(200).send(returnData);
 };
 
 exports.login = async (req, res) => {
@@ -47,6 +60,12 @@ exports.login = async (req, res) => {
     res.status(500).send({ message: "email or password is not correct." });
   }
   // Save Tutorial in the database
+};
+
+exports.getInfo = async (req, res) => {
+  const userData = await User.find();
+  console.log("userData :>> ", userData);
+  res.status(200).send(userData);
 };
 
 // // Retrieve all Tutorials from the database.

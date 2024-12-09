@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class AccountService {
   private apiUrl = 'http://localhost:5000/api';
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-     const data =  this.http.post<any>(this.apiUrl+'/users/login', credentials);
+  getUserInfo(): Observable<any> {
+     const data =  this.http.get<any>(this.apiUrl+'/users/getInfo');
      console.log('data :>> ', data);
      return data
 

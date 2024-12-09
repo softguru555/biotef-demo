@@ -7,7 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule for NgIf
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login/login.service';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ import { RouterModule, Routes } from '@angular/router';
     ReactiveFormsModule,
     CommonModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    // BrowserAnimationsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -27,11 +30,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private router: Router
   ) { 
     
   }
   
   ngOnInit(): void {
+    if(window.localStorage.getItem('userInfo')) {
+      this.router.navigate(['/account']);
+    }
     this.initForm();
   }
 
@@ -58,8 +65,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       const encryptedPassword = CryptoJS.AES.encrypt(JSON.stringify({ email, password }), 'biotefCredentials').toString();
       this.loginService.login({email, password}).subscribe({
         next: (response) => {
+          window.localStorage.setItem('userInfo', response);
           console.log('Login successful:', response);
-
+          this.router.navigate(['/account']);
+          
         },
         error: (error) => {
           console.log("login failed:", error);

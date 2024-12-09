@@ -17,5 +17,6 @@ const userController = require("../controllers/user.controller");
 // });
 router.post("/signup", userController.create);
 router.post("/login", userController.login);
+router.get("/getInfo", userController.getInfo);
 
 module.exports = router;
