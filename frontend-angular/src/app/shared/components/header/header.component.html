@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-9 col-md-8 col-sm-9 header-nav my-3 text-center flex gap-4">
               <!-- Admin -->
-              <button mat-button routerLink="/orders/admin" >Orders</button>
               <button mat-button routerLink="/account" >Accounts</button>
+              <button mat-button routerLink="/orders/admin" >Orders</button>
               <!-- User -->
               <button mat-button routerLink="/account">My Account</button>
               <button mat-button routerLink="/orders">My Orders</button>
@@ -30,98 +30,6 @@
                       <mat-icon>account_circle</mat-icon>
                       <span>Account</span>
                   </button>
-
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/orders/admin"
-                  >
-                      Orders
-                  </button>
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/account/admin"
-                  >
-                      Accounts
-                  </button>
-                  <button
-                      class="mobile-only"
-                      mat-menu-item
-                      [matMenuTriggerFor]="settings"
-                  >
-                      Settings
-                  </button>
-                  <mat-menu #settings="matMenu">
-                      <button mat-menu-item routerLink="/settings/math">
-                          <mat-icon>price_change</mat-icon>
-                          <span>Math Calc.</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/diesize">
-                          <mat-icon>photo_size_select_small</mat-icon>
-                          <span>Die Sizes</span>
-
-                      </button>
-                      <button mat-menu-item routerLink="/settings/material">
-                          <mat-icon>gradient</mat-icon>
-                          <span>Materials</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/coating">
-                          <mat-icon>tonality</mat-icon>
-                          <span>Coatings</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/shape">
-                      <mat-icon>format_shapes</mat-icon>
-                      <span>Shapes</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/label-placement">
-                      <mat-icon>label</mat-icon>
-                      <span>Label Plac.</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/core-size">
-                      <mat-icon>photo_size_select_actual</mat-icon>
-                      <span>Core Size</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/outside-diameter">
-                      <mat-icon>settings_backup_restore</mat-icon>
-                      <span>Outside Di.</span>
-                      </button>
-                      <button mat-menu-item routerLink="/settings/copy-position">
-                      <mat-icon>settings_overscan</mat-icon>
-                      <span>Copy Posi.</span>
-                      </button>
-                  </mat-menu>
-                  <!-- User -->
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/account"
-                      >
-                      My Account
-                  </button>
-                  <button class="mobile-only"
-                      mat-menu-item routerLink="/orders"
-                      >
-                      My Orders
-                  </button>
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/checkout/product"
-                      >
-                      My Products
-                  </button>
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/checkout/product"
-                      >
-                      Products
-                  </button>
-                  <button class="mobile-only"
-                      mat-menu-item
-                      routerLink="/orders/production"
-                     >
-                      Admin Users
-                  </button>
-
-                  <!-- For now condition is changed based on specific superAdmin / e-mail wise :
-                  *ngIf="user?.role === 'admin' && user?.isSuperAdmin && (user.email == 'zach@biotef.com' || user.email == 'scott@biotef.com' || user.email == 'todd@biotef.com')" -->
                   <button mat-menu-item (click)="logOut()">
                       <mat-icon>logout</mat-icon>
                       <span>Logout</span>
