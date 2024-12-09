@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule, Routes, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -16,7 +18,13 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  logOut() {
+  constructor (
+    private router: Router
+  ) {
 
+  }
+  logOut() {
+    window.localStorage.removeItem('userInfo');
+    this.router.navigate(['/auth/login']);
   }
 }

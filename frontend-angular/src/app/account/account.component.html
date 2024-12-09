@@ -31,7 +31,6 @@
                                 <th class="company-name-header" mat-header-cell *matHeaderCellDef mat-sort-header>role</th>
                                 <td class="company-name" mat-cell *matCellDef="let element"> {{ element.role }} </td>
                             </ng-container>
-                           
                             <tr mat-header-row *matHeaderRowDef="defaultWebAdminDisplayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: defaultWebAdminDisplayedColumns;"></tr>
                         </table>

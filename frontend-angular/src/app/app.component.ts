@@ -31,23 +31,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const user = window.localStorage.getItem('userInfo');
-    console.log('user :>> ', user);
-    if(user) {
-      this.isLoggedIn = true;
-    }
-    if(!this.isLoggedIn) {
-      this.router.navigate(['auth/login']);
-    }
-    if (isPlatformBrowser(this.platformId)) {
-      const navMain = this.document.getElementById('navbarCollapse');
-      if (navMain) {
-        navMain.onclick = function onClick() {
-          if (navMain) {
-            navMain.classList.remove("show");
-          }
-        }
-      }
-    }
   }
 }

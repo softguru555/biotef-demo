@@ -22,19 +22,10 @@
 
           </div>
           <div class="col-lg-1 col-md-1 col-sm-1 header-buttons my-3">
-              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Biotef Menu" class="float-end">
-                  <mat-icon>menu</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                  <button mat-menu-item routerLink="/account">
-                      <mat-icon>account_circle</mat-icon>
-                      <span>Account</span>
-                  </button>
-                  <button mat-menu-item (click)="logOut()">
-                      <mat-icon>logout</mat-icon>
-                      <span>Logout</span>
-                  </button>
-              </mat-menu>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+            </button>
           </div>
       </div>
   </div>
