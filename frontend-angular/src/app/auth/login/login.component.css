@@ -1,26 +1,26 @@
 .form-login {
-    width: 100%;
-    max-width: 400px;
-    padding: 40px;
-    margin: auto;
-    justify-content: center;
-    background: #ffffff;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  margin: auto;
+  justify-content: center;
+  background: #ffffff;
 }
 a {
   color: blue;
   text-decoration: underline;
 }
-button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep{
+button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep {
   background-color: transparent !important;
-  border: 1px solid rgba(0,0,0,0.26);
-  color: rgba(0,0,0,0.26)!important;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.26) !important;
 }
 
 .mat-button-wrapper {
-    color: rgba(0,0,0,0.26);
+  color: rgba(0, 0, 0, 0.26);
 }
 .header-logo img {
-    max-width: 60%;
+  max-width: 60%;
 }
 
 .spinner-wrapper {
@@ -35,7 +35,7 @@ button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep{
   align-items: center;
   background-color: rgba(50, 50, 50, 0.1);
 }
-.main-section{
+.main-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,10 +43,9 @@ button.mat-primary.save-button.mat-mdc-button-disabled ::ng-deep{
 }
 
 button {
-  background-color: #3cba58!important;
+  background-color: #3cba58 !important;
 }
 
 mat-form-field {
   width: 100%;
 }
-

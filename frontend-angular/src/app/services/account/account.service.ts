@@ -11,9 +11,8 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   getUserInfo(): Observable<any> {
-     const data =  this.http.get<any>(this.apiUrl+'/users/getInfo');
-     console.log('data :>> ', data);
-     return data
-
+    const data = this.http.get<any>(this.apiUrl + '/users/getInfo');
+    console.log('data :>> ', data);
+    return data;
   }
 }

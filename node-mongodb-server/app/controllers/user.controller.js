@@ -1,7 +1,10 @@
 const db = require("../models");
+require("dotenv").config();
 const User = db.user;
 const Company = db.company;
 const authHelper = require("../helpers/auth.helper.js");
+const CryptoJS = require("crypto-js");
+jwt = require("jsonwebtoken");
 // Create and Save a new Tutorial
 
 exports.create = async (req, res) => {
@@ -52,20 +55,38 @@ exports.create = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  // try {
+  const decryptedBytes = CryptoJS.AES.decrypt(req.body.credentials, "biotefCredentials");
+  const decryptedData = decryptedBytes.toString(CryptoJS.enc.Utf8);
+  const decryptedCredentials = JSON.parse(decryptedData);
+  // validator.exist(decryptedCredentials, ["email", "password"]);
+  req.body = decryptedCredentials;
   const userData = await User.findOne({ email: req.body.email, password: req.body.password });
-  console.log("userData :>> ", userData);
+  const token = jwt.sign({ email: req.body.email }, process.env.SECRET_KEY, { expiresIn: "1h" });
+  console.log("token :>> ", token);
   if (userData) {
-    res.status(200).send(userData);
+    var data = {};
+    data.token = token;
+    data.userInfo = userData;
+    res.status(200).send(data);
   } else {
     res.status(500).send({ message: "email or password is not correct." });
   }
+  // } catch (error) {
+  //   throw { status: 401, message: "Unauthorized" };
+  // }
+
   // Save Tutorial in the database
 };
 
 exports.getInfo = async (req, res) => {
-  const userData = await User.find();
-  console.log("userData :>> ", userData);
-  res.status(200).send(userData);
+  try {
+    const userData = await User.find();
+    console.log("userData :>> ", userData);
+    res.status(200).send(userData);
+  } catch (e) {
+    throw { status: 400, message: "something went wrong" };
+  }
 };
 
 // // Retrieve all Tutorials from the database.

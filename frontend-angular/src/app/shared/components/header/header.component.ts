@@ -5,26 +5,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule, Routes, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-header',
-  imports: [
-    CommonModule, 
-    RouterLink,
-    MatIconModule,
-    MatMenuModule
-  ],
+  imports: [CommonModule, RouterLink, MatIconModule, MatMenuModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor (
-    private router: Router
-  ) {
-
-  }
+  constructor(private router: Router) {}
   logOut() {
-    window.localStorage.removeItem('userInfo');
+    localStorage.removeItem('userInfo');
     this.router.navigate(['/auth/login']);
   }
 }

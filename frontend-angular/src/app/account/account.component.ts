@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../services/account/account.service';
 import { MatCardModule } from '@angular/material/card';
@@ -8,29 +8,20 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 
 interface User {
-  name: string,
-  email: string,
-  phone: string,
-  role: string
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
 }
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatIconModule,
-    CommonModule,
-    MatTableModule
-  ],
+  imports: [MatCardModule, MatIconModule, CommonModule, MatTableModule],
   templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+  styleUrl: './account.component.css',
 })
-
 export class AccountComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private account: AccountService
-  ) {}
+  constructor(private route: ActivatedRoute, private account: AccountService) {}
   // this.userId = this.route.snapshot.paramMap.get('id') || '';
   users: User[] = [];
   dataSource = new MatTableDataSource<any>([]);
@@ -41,11 +32,11 @@ export class AccountComponent implements OnInit {
     'role',
   ];
 
-  // userData: 
+  // userData:
 
   ngOnInit() {
     // Get the route parameter
-    const data = (window.localStorage.getItem('userInfo'));
+    const data = localStorage.getItem('userInfo');
     console.log('data :>> ', data);
     this.getUsers();
   }
@@ -54,11 +45,11 @@ export class AccountComponent implements OnInit {
       next: (response) => {
         this.users = response;
         this.dataSource.data = response;
-        console.log('this.users :>> ', this.users);        
+        console.log('this.users :>> ', this.users);
       },
       error: (error) => {
-        console.log("login failed:", error);
-      }
-    })
+        console.log('login failed:', error);
+      },
+    });
   }
 }

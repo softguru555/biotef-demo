@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.model");
 const userController = require("../controllers/user.controller");
+const limiter = require("../helpers/limiter");
 
 // router.post("/login", async (req, res) => {
 //   console.log("req :>> ", req);
@@ -16,7 +17,7 @@ const userController = require("../controllers/user.controller");
 //   }
 // });
 router.post("/signup", userController.create);
-router.post("/login", userController.login);
+router.post("/login", limiter.loginLimiter, userController.login);
 router.get("/getInfo", userController.getInfo);
 
 module.exports = router;
