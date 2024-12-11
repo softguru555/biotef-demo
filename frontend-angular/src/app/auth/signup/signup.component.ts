@@ -1,13 +1,16 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  FormGroup,
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule for NgIf
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { SignupService } from '../../services/signup/signup.service';
-
-// import { GoogleAutocompleteModule } from '../../component/google-autocomplete/google-autocomplete.module';
 
 @Component({
   selector: 'app-signup',
@@ -18,10 +21,9 @@ import { SignupService } from '../../services/signup/signup.service';
     CommonModule,
     MatButtonModule,
     MatCardModule,
-    // GoogleAutocompleteModule
   ],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent implements OnInit {
   signupFormGroup!: FormGroup;
@@ -32,41 +34,49 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public zone: NgZone,
-    private signupService : SignupService,
-  ) {
-    
-  }
+    private signupService: SignupService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm () {
-    // this.billingAddressFormGroup = this.formBuilder.group({ addressInput: ['', Validators.required] });
-
+  initForm() {
     this.signupFormGroup = this.formBuilder.group({
       billCompanyName: ['', Validators.required],
       billContactName: ['', Validators.required],
       billAddress: ['', Validators.required],
-      // billAddress: this.billingAddressFormGroup,
       billEmail: ['', Validators.required],
       billPhone: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
   }
-  get billCompanyName() { return this.signupFormGroup.get('billCompanyName')! };
-  get billContactName() { return this.signupFormGroup.get('billContactName')! };
-  get billAddress() { return this.signupFormGroup.get('billAddress')! };
-  get billEmail() { return this.signupFormGroup.get('billEmail')! };
-  get billPhone() { return this.signupFormGroup.get('billPhone')! };
-  get password() { return this.signupFormGroup.get('password')! };
-  get confirmPassword() { return this.signupFormGroup.get('confirmPassword')! };
+  get billCompanyName() {
+    return this.signupFormGroup.get('billCompanyName')!;
+  }
+  get billContactName() {
+    return this.signupFormGroup.get('billContactName')!;
+  }
+  get billAddress() {
+    return this.signupFormGroup.get('billAddress')!;
+  }
+  get billEmail() {
+    return this.signupFormGroup.get('billEmail')!;
+  }
+  get billPhone() {
+    return this.signupFormGroup.get('billPhone')!;
+  }
+  get password() {
+    return this.signupFormGroup.get('password')!;
+  }
+  get confirmPassword() {
+    return this.signupFormGroup.get('confirmPassword')!;
+  }
 
   getAddress(obj: any) {
     this.zone.run(() => {
       if (obj.place)
-        if (obj.type == 'billing')
-          this.billAddress.setValue(obj.place)
+        if (obj.type == 'billing') this.billAddress.setValue(obj.place);
     });
   }
   signup() {
@@ -78,16 +88,23 @@ export class SignupComponent implements OnInit {
     const password = this.password.value;
     // // encrypt email and password while login
     // const encryptedPassword = CryptoJS.AES.encrypt(JSON.stringify({ email, password }), 'biotefCredentials').toString();
-    this.signupService.signup({email: email, password: password, phone: phone, address: address, companyName: companyName, contactName: contactName}).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response);
-        
-
-      },
-      error: (error) => {
-        this.show = true;
-        console.log("login failed:", error);
-      }
-    })
+    this.signupService
+      .signup({
+        email: email,
+        password: password,
+        phone: phone,
+        address: address,
+        companyName: companyName,
+        contactName: contactName,
+      })
+      .subscribe({
+        next: (response) => {
+          console.log('Login successful:', response);
+        },
+        error: (error) => {
+          this.show = true;
+          console.log('login failed:', error);
+        },
+      });
   }
 }

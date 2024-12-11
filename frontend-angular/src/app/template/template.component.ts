@@ -20,7 +20,6 @@ export class TemplateComponent implements OnInit {
     var userInfo = localStorage.getItem('userInfo');
     if (userInfo) {
       this.loggedIn.next(true);
-      // console.log("I", this.LoggedIn);
     } else {
       this.router.navigate(['auth/login']);
     }

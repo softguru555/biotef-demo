@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
-import { Inject, PLATFORM_ID } from '@angular/core';
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [CommonModule, RouterOutlet],
@@ -14,9 +10,6 @@ import { Router, RouterModule, Routes } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'angular-routing';
-  footerUrl = 'https://www.ganatan.com';
-  footerLink = 'www.ganatan.com';
   isLoggedIn = false;
   constructor(private router: Router) {}
 

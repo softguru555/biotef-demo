@@ -7,9 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule for NgIf
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login/login.service';
-import { RouterModule, Routes, Router } from '@angular/router';
-
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +18,6 @@ import { RouterModule, Routes, Router } from '@angular/router';
     CommonModule,
     MatButtonModule,
     RouterModule,
-    // BrowserAnimationsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -52,12 +49,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    console.log('this.FormGroup.valid :>> ', this.FormGroup.valid);
   }
 
   signIn() {
     if (!this.FormGroup.valid) return;
-    console.log('good :>> ');
     const email = this.email.value;
     const password = this.password.value;
     console.log('email :>> ', email, password);
@@ -67,7 +62,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       'biotefCredentials'
     ).toString();
     this.loginService.login({ credentials: encryptedPassword });
-    // this.authService.signIn({ credentials: encryptedPassword });
   }
   ngOnDestroy() {}
 }

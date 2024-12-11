@@ -16,41 +16,11 @@ exports.create = async (req, res) => {
   }
   let company = authHelper.buildCompany(req);
   const newCompany = await authHelper.createCompany(company);
-  console.log("newCompany :>> ", newCompany);
-  //Company Approver
-  //   var shippingAddress;
-  //   if (req.body.shippingAddress) {
-  //     const shippingAddressData = req.body.shippingAddress;
-  //     shippingAddressData.companyId = newCompany.id;
-  //     shippingAddress = await CompanyAddress.save(shippingAddressData);
-  //   } else {
-  //     const address = authHelper.buildShippingAddress(req, newCompany);
-  //     shippingAddress = await CompanyAddress.save(address);
-  //   }
-  //   if (req.body.shippingInfo) {
-  //     const shippingInfo = req.body.shippingInfo;
-  //     await CompanyAddress.update(
-  //       {
-  //         coreSize: shippingInfo.coreSize,
-  //         defaultOD: shippingInfo.defaultOD,
-  //         copyPosition: shippingInfo.copyPosition,
-  //       },
-  //       {
-  //         where: {
-  //           id: shippingAddress.id,
-  //         },
-  //       }
-  //     );
-  //   }
-
-  //User
   const user = authHelper.buildUser(req, newCompany);
-  console.log("user :>> ", user);
   const newUser = await authHelper.createUser(user);
   const returnData = [];
   returnData.companyId = newCompany.id;
   returnData.user = newUser;
-  console.log("returnData :>> ", returnData);
   res.status(200).send(returnData);
 };
 
@@ -72,17 +42,11 @@ exports.login = async (req, res) => {
   } else {
     res.status(500).send({ message: "email or password is not correct." });
   }
-  // } catch (error) {
-  //   throw { status: 401, message: "Unauthorized" };
-  // }
-
-  // Save Tutorial in the database
 };
 
 exports.getInfo = async (req, res) => {
   try {
     const userData = await User.find();
-    console.log("userData :>> ", userData);
     res.status(200).send(userData);
   } catch (e) {
     throw { status: 400, message: "something went wrong" };
