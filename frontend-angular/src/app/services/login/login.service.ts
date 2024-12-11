@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../../models/User';
+import { LocalStorageService } from '../storage/local-storage.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,10 +12,14 @@ export class LoginService {
   private apiUrl = 'http://localhost:5000/api';
   private currentUserSubject!: BehaviorSubject<User | null>;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private localStorage: LocalStorageService
+  ) {
     this.currentUserSubject = new BehaviorSubject<User | null>(
-      localStorage.getItem('userInfo')
-        ? ({ name: localStorage.getItem('userInfo')! } as User)
+      this.localStorage.getItem('userInfo')
+        ? ({ name: this.localStorage.getItem('userInfo')! } as User)
         : null
     );
   }
@@ -24,8 +30,8 @@ export class LoginService {
   login(credentials: any) {
     this.http.post<any>(this.apiUrl + '/users/login', credentials).subscribe({
       next: (response) => {
-        localStorage.setItem('userInfo', response.userInfo);
-        localStorage.setItem('authToken', response.token);
+        this.localStorage.setItem('userInfo', response.userInfo);
+        this.localStorage.setItem('authToken', response.token);
         const data: User = response.userInfo;
         this.saveCurrentUser(data);
         this.router.navigate(['/account']);
@@ -42,8 +48,8 @@ export class LoginService {
     this.currentUserSubject.next(data);
   }
   logout() {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userInfo');
+    this.localStorage.removeItem('authToken');
+    this.localStorage.removeItem('userInfo');
     this.router.navigate(['auth/login']);
   }
 }

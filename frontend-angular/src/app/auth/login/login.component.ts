@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common'; // Import CommonModule for NgIf
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login/login.service';
 import { RouterModule, Router } from '@angular/router';
+import { LocalStorageService } from '../../services/storage/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private localStorage: LocalStorageService
   ) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('userInfo')) {
+    if (this.localStorage.getItem('userInfo')) {
       this.router.navigate(['/account']);
     }
     this.initForm();
