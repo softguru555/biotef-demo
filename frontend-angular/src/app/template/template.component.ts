@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './template.component.css',
 })
 export class TemplateComponent implements OnInit {
+  constructor(private router: Router) {}
   loggedIn = new BehaviorSubject<boolean>(false);
 
   // isLoggedIn: boolean = false;
@@ -20,6 +21,8 @@ export class TemplateComponent implements OnInit {
     if (userInfo) {
       this.loggedIn.next(true);
       // console.log("I", this.LoggedIn);
+    } else {
+      this.router.navigate(['auth/login']);
     }
   }
 }

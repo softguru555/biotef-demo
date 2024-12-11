@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
+import { AuthGuardService } from './services/login/auth-guard.service';
 export const routes: Routes = [
-  // { path: '', component: HomeComponent, },
   {
     path: '',
     component: TemplateComponent,
@@ -15,6 +15,7 @@ export const routes: Routes = [
       },
       {
         path: 'auth/signup',
+        canActivate: [AuthGuardService],
         loadComponent: () =>
           import('./auth/signup/signup.component').then(
             (mod) => mod.SignupComponent
@@ -22,6 +23,7 @@ export const routes: Routes = [
       },
       {
         path: 'account',
+        canActivate: [AuthGuardService],
         loadComponent: () =>
           import('./account/account.component').then(
             (mod) => mod.AccountComponent

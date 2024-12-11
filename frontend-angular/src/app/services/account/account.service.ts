@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,13 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   getUserInfo(): Observable<any> {
-    const data = this.http.get<any>(this.apiUrl + '/users/getInfo');
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const data = this.http.get<any>(this.apiUrl + '/users/getInfo', {
+      headers,
+    });
     console.log('data :>> ', data);
     return data;
   }

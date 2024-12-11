@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user.model");
 const userController = require("../controllers/user.controller");
 const limiter = require("../helpers/limiter");
+const verifyToken = require("../helpers/verifyToken");
 
 // router.post("/login", async (req, res) => {
 //   console.log("req :>> ", req);
@@ -18,6 +19,6 @@ const limiter = require("../helpers/limiter");
 // });
 router.post("/signup", userController.create);
 router.post("/login", limiter.loginLimiter, userController.login);
-router.get("/getInfo", userController.getInfo);
+router.get("/getInfo", verifyToken, userController.getInfo);
 
 module.exports = router;

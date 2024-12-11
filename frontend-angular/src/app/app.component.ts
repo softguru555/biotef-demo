@@ -9,27 +9,16 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'app-root',
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-  ],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   title = 'angular-routing';
   footerUrl = 'https://www.ganatan.com';
   footerLink = 'www.ganatan.com';
   isLoggedIn = false;
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: object,
-    private router: Router
-  ) {
-  }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }
