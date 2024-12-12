@@ -6,10 +6,17 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { User } from '../../../models/User';
 import { LoginService } from '../../../services/login/login.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, MatIconModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })

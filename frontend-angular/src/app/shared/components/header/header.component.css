@@ -14,6 +14,7 @@
   max-width: 175px;
 }
 
+
 .header-logo:hover {
   cursor: pointer;
 }
@@ -219,6 +220,10 @@ padding-left: 0px;
 
 .global_search_products_table_wrap{
 border-right : 1px solid lightgrey;
+}
+
+button:hover {
+  background-color: #bec5ca;
 }
 @media (max-width: 575.98px) {
   .header-nav {

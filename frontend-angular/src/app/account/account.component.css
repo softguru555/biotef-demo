@@ -1,0 +1,66 @@
+.mat-mdc-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+table {
+    min-width: 1024px;
+    max-width: 100%;
+    width: 100%;
+    background-color: #ffff;
+
+  }
+  
+  .mat-mdc-card {
+    background-color: #ffff;
+  }
+  .account-filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .delete-button {
+    padding: 5px 2px !important;
+    transition: all ease 0.4s;
+    line-height: 14px;
+    min-width: 40px;
+  }
+  
+  .delete-button .mat-icon {
+    width: 20px;
+    height: 16px;
+    font-size: 16px;
+  }
+  
+  @media only screen and (max-width:1024px) {
+    table {
+      min-width: unset;
+    }
+    .account-email-header,
+    .account-email {
+      max-width: 200px;
+      overflow-wrap: anywhere;
+    }
+  }
+  
+  @media (max-width: 576px) { 
+    .account-filter{
+      display: block;
+    }
+    .input-filter{
+      float: inherit;
+      margin: 0;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    
+    .account-contact-header,
+    .account-contact,
+    .account-email-header,
+    .account-email {
+      display: none;
+    }
+  }
+  
