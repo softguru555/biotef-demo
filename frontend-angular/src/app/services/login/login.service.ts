@@ -4,13 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../../models/User';
 import { LocalStorageService } from '../storage/local-storage.service';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   private apiUrl = 'http://localhost:5000/api';
   private currentUserSubject!: BehaviorSubject<User | null>;
+  public currentUser: Observable<User | null>;
 
   constructor(
     private http: HttpClient,
@@ -19,9 +20,10 @@ export class LoginService {
   ) {
     this.currentUserSubject = new BehaviorSubject<User | null>(
       this.localStorage.getItem('userInfo')
-        ? ({ name: this.localStorage.getItem('userInfo')! } as User)
+        ? (this.localStorage.getItem('userInfo')! as User)
         : null
     );
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User | null {
@@ -50,6 +52,7 @@ export class LoginService {
   logout() {
     this.localStorage.removeItem('authToken');
     this.localStorage.removeItem('userInfo');
+    this.currentUserSubject.next(null);
     this.router.navigate(['auth/login']);
   }
 }

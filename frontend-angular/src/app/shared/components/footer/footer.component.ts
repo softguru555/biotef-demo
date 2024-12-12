@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { User } from '../../../models/User';
 @Component({
   selector: 'app-footer',
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent {
+  @Input() user?: User;
 }

@@ -1,32 +1,50 @@
-<section id="header">
+<section id="header" *ngIf="user">
   <div class="container">
-      <div class="row mx-0">
-          <div class="col-lg-2 col-md-3 col-sm-2 header-logo my-3">
-              <img class="d-block" src="/assets/images/Biotef-logo.svg?quality=90" alt="Biotef" width="162" height="50" routerLink="/orders">
-              <ng-template #userLogo>
-                  <img class="d-block" src="/assets/images/Biotef-logo.svg?quality=90" alt="Biotef" width="162" height="50" routerLink="/orders">
-              </ng-template>
-          </div>
-          <div class="col-lg-9 col-md-8 col-sm-9 header-nav my-3 text-center flex gap-4">
-              <!-- Admin -->
-              <button mat-button routerLink="/account" >Accounts</button>
-              <button mat-button routerLink="/orders/admin" >Orders</button>
-              <!-- User -->
-              <button mat-button routerLink="/account">My Account</button>
-              <button mat-button routerLink="/orders">My Orders</button>
-              <button mat-button routerLink="/checkout/product" >My Products</button>
-              <button mat-button routerLink="/checkout/product">Products</button>
-              <button mat-button routerLink="/orders/production">Production Line</button>
-              <button mat-button routerLink="/settings/admin-users">Admin Users</button>
-
-
-          </div>
-          <div class="col-lg-1 col-md-1 col-sm-1 header-buttons my-3">
-            <button mat-menu-item (click)="logOut()">
-                <mat-icon>logout</mat-icon>
-                <span>Logout</span>
-            </button>
-          </div>
+    <div class="row mx-0">
+      <div class="col-lg-2 col-md-3 col-sm-2 header-logo my-3">
+        <img
+          class="d-block"
+          src="/assets/images/Biotef-logo.svg?quality=90"
+          alt="Biotef"
+          width="162"
+          height="50"
+          routerLink="/orders"
+        />
+        <ng-template #userLogo>
+          <img
+            class="d-block"
+            src="/assets/images/Biotef-logo.svg?quality=90"
+            alt="Biotef"
+            width="162"
+            height="50"
+            routerLink="/orders"
+          />
+        </ng-template>
       </div>
+      <div
+        class="col-lg-9 col-md-8 col-sm-9 header-nav my-3 text-center flex gap-4"
+      >
+        <!-- Admin -->
+        <button mat-button routerLink="/account">Accounts</button>
+        <button mat-button routerLink="/orders/admin">Orders</button>
+        <!-- User -->
+        <button mat-button routerLink="/account">My Account</button>
+        <button mat-button routerLink="/orders">My Orders</button>
+        <button mat-button routerLink="/checkout/product">My Products</button>
+        <button mat-button routerLink="/checkout/product">Products</button>
+        <button mat-button routerLink="/orders/production">
+          Production Line
+        </button>
+        <button mat-button routerLink="/settings/admin-users">
+          Admin Users
+        </button>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 header-buttons my-3">
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
   </div>
 </section>

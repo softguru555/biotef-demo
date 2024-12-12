@@ -1,7 +1,7 @@
 <div>
   <!-- Header Section -->
-  <div class="w-full px-0">
-    <app-header *ngIf="loggedIn.value"></app-header>
+  <div class="w-full px-0" *ngIf="user">
+    <app-header [user]="user"></app-header>
   </div>
 
   <!-- Main Content Section -->
@@ -10,7 +10,7 @@
   </div>
 
   <!-- Footer Section -->
-  <div>
-    <app-footer *ngIf="loggedIn.value"></app-footer>
+  <div *ngIf="user">
+    <app-footer [user]="user"></app-footer>
   </div>
 </div>

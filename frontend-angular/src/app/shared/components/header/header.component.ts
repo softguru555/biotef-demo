@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { User } from '../../../models/User';
+import { LoginService } from '../../../services/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +14,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  @Input() user?: User;
+  constructor(private router: Router, private loginService: LoginService) {}
   logOut() {
-    localStorage.removeItem('userInfo');
-    this.router.navigate(['/auth/login']);
+    this.loginService.logout();
   }
 }
