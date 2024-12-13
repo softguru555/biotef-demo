@@ -46,8 +46,27 @@ exports.login = async (req, res) => {
 
 exports.getInfo = async (req, res) => {
   try {
-    const userData = await User.find();
-    res.status(200).send(userData);
+    console.log("req :>> ", req.query);
+    let sortField = req.query.active;
+    let sortOrder = req.query.direction == "asc" ? 1 : -1;
+    let page = req.query.page;
+    let limit = req.query.limit;
+    let skip = (page - 1) * limit;
+    const userData = await User.find()
+      .sort({ [sortField]: sortOrder })
+      .skip(skip)
+      .limit(limit);
+    const totalDocument = await User.count();
+    console.log("totalDocument :>> ", totalDocument);
+    const totalPages = Math.ceil(totalDocument / limit);
+    res.status(200).send({
+      userData,
+      pagination: {
+        totalDocument,
+        totalPages,
+        current: page,
+      },
+    });
   } catch (e) {
     throw { status: 400, message: "something went wrong" };
   }

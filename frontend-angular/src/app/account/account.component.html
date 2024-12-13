@@ -1,44 +1,100 @@
 <section id="orderadmin">
-    <div class="row g-3">
-        <div class="col-lg-12">
-            <mat-card class="bio-elevation-z0 mt-2 h-100">
-                <mat-card-header>
-                <div class="d-flex w-100 justify-content-between">
-                  <div class="order-title d-flex flex-column flex-md-row align-items-md-center">
-                    <div class="d-flex flex-column me-4">
-                      <mat-card-title>Account</mat-card-title>
-                    </div>
-                  </div>
-                </div>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="bio-elevation-z3 table-data">
-                        <div class="table-responsive table_order_wrap">
-                            <table mat-table [dataSource]="dataSource" matSort matSortDisableClear>
-                            <ng-container matColumnDef="name">
-                                <th class="company-name-header" mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
-                                <td class="company-name" mat-cell *matCellDef="let element"> {{ element.name }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="email">
-                                <th class="company-name-header" mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
-                                <td class="company-name" mat-cell *matCellDef="let element"> {{ element.email }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="phone">
-                                <th class="company-name-header" mat-header-cell *matHeaderCellDef mat-sort-header>phone</th>
-                                <td class="company-name" mat-cell *matCellDef="let element"> {{ element.phone }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="role">
-                                <th class="company-name-header" mat-header-cell *matHeaderCellDef mat-sort-header>role</th>
-                                <td class="company-name" mat-cell *matCellDef="let element"> {{ element.role }} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="defaultWebAdminDisplayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: defaultWebAdminDisplayedColumns;"></tr>
-                        </table>
-                        </div>
-                        <!-- <mat-paginator #paginator (page)="handlePageEvent($event)"  [pageSize]="pageSize" [length]="length" [pageSizeOptions]="pageSizeOptions"  [showFirstLastButtons]="showFirstLastButtons" ></mat-paginator> -->
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
+  <div class="row g-3 mb-4">
+    <div class="col-lg-12">
+      <mat-card class="bio-elevation-z0 mt-2 h-100">
+        <mat-card-header>
+          <div class="d-flex w-100 justify-content-between">
+            <div
+              class="order-title d-flex flex-column flex-md-row align-items-md-center"
+            >
+              <div class="d-flex flex-column me-4">
+                <mat-card-title>Account</mat-card-title>
+              </div>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="bio-elevation-z3 table-data">
+            <div class="table-responsive table_order_wrap">
+              <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort
+                matSortDisableClear
+                (matSortChange)="sortData($event)"
+              >
+                <ng-container matColumnDef="name">
+                  <th
+                    class="company-name-header"
+                    mat-header-cell
+                    *matHeaderCellDef
+                    mat-sort-header
+                  >
+                    name
+                  </th>
+                  <td class="company-name" mat-cell *matCellDef="let element">
+                    {{ element.name }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                  <th
+                    class="company-name-header"
+                    mat-header-cell
+                    *matHeaderCellDef
+                    mat-sort-header
+                  >
+                    email
+                  </th>
+                  <td class="company-name" mat-cell *matCellDef="let element">
+                    {{ element.email }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="phone">
+                  <th
+                    class="company-name-header"
+                    mat-header-cell
+                    *matHeaderCellDef
+                    mat-sort-header
+                  >
+                    phone
+                  </th>
+                  <td class="company-name" mat-cell *matCellDef="let element">
+                    {{ element.phone }}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="role">
+                  <th
+                    class="company-name-header"
+                    mat-header-cell
+                    *matHeaderCellDef
+                    mat-sort-header
+                  >
+                    role
+                  </th>
+                  <td class="company-name" mat-cell *matCellDef="let element">
+                    {{ element.role }}
+                  </td>
+                </ng-container>
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="defaultWebAdminDisplayedColumns"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: defaultWebAdminDisplayedColumns"
+                ></tr>
+              </table>
+            </div>
+            <mat-paginator
+              #paginator
+              (page)="handlePageEvent($event)"
+              [pageSize]="pageSize"
+              [length]="length"
+              [pageSizeOptions]="[5, 10, 20]"
+            ></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
+  </div>
 </section>
