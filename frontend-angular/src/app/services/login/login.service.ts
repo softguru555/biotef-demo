@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { User } from '../../models/User';
 import { LocalStorageService } from '../storage/local-storage.service';
 import { Observable } from 'rxjs';
+import { HotToastService } from '@ngxpert/hot-toast';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +18,8 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private toast: HotToastService
   ) {
     this.currentUserSubject = new BehaviorSubject<User | null>(
       this.localStorage.getItem('userInfo')
@@ -36,12 +39,13 @@ export class LoginService {
         this.localStorage.setItem('authToken', response.token);
         const data: User = response.userInfo;
         this.saveCurrentUser(data);
+        this.toast.info('Login Success!');
+        // this.notify.showSuccess('Login Success!', 'Success ');
         this.router.navigate(['/account']);
-        alert('Login Success!');
       },
       error: (error) => {
         console.log('error :>> ', error);
-        alert(error.error.message);
+        this.toast.error('email or password is not correct');
       },
     });
   }

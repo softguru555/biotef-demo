@@ -37,7 +37,7 @@ interface Sort {
   styleUrl: './account.component.css',
 })
 export class AccountComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private account: AccountService) {}
+  constructor(private account: AccountService) {}
   // this.userId = this.route.snapshot.paramMap.get('id') || '';
   users: User[] = [];
   dataSource = new MatTableDataSource<any>([]);
