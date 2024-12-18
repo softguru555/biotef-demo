@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../services/account/account.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,7 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login/login.service';
 interface User {
   name: string;
   email: string;
@@ -37,7 +37,11 @@ interface Sort {
   styleUrl: './account.component.css',
 })
 export class AccountComponent implements OnInit {
-  constructor(private account: AccountService) {}
+  constructor(
+    private account: AccountService,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
   // this.userId = this.route.snapshot.paramMap.get('id') || '';
   users: User[] = [];
   dataSource = new MatTableDataSource<any>([]);
@@ -57,7 +61,6 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     // Get the route parameter
     const data = localStorage.getItem('userInfo');
-    console.log('data :>> ', data);
     this.getUsers();
   }
   getUsers(sort?: Sort) {
@@ -68,16 +71,17 @@ export class AccountComponent implements OnInit {
     if (sort?.active) {
       Object.assign(filter, sort);
     }
-    console.log('filter :>> ', filter);
     this.account.getUserInfo(filter).subscribe({
       next: (response) => {
-        console.log('response :>> ', response);
         this.users = response;
         this.dataSource.data = response.userData;
         // this.dataSource.paginator = response.pagination;
         this.length = response.pagination.totalDocument;
       },
       error: (error) => {
+        if ((error.error.message = 'Invalid Token')) {
+          this.loginService.logout();
+        }
         console.log('login failed:', error);
       },
     });
