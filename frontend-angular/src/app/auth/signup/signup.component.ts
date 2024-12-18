@@ -49,6 +49,7 @@ export class SignupComponent implements OnInit {
       billEmail: ['', Validators.required],
       billPhone: ['', Validators.required],
       password: ['', Validators.required],
+      confirmPassword: [''],
     });
   }
   get billCompanyName() {
@@ -86,6 +87,7 @@ export class SignupComponent implements OnInit {
     const email = this.billEmail.value;
     const phone = this.billPhone.value;
     const password = this.password.value;
+    const confirmPassword = this.confirmPassword.value;
     // // encrypt email and password while login
     // const encryptedPassword = CryptoJS.AES.encrypt(JSON.stringify({ email, password }), 'biotefCredentials').toString();
     this.signupService

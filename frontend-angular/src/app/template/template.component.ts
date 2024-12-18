@@ -15,11 +15,7 @@ import { User } from '../models/User';
 })
 export class TemplateComponent implements OnInit {
   user?: User | null | undefined;
-  constructor(
-    private router: Router,
-    private localStorage: LocalStorageService,
-    private loginService: LoginService
-  ) {}
+  constructor(private router: Router, private loginService: LoginService) {}
   loggedIn = new BehaviorSubject<boolean>(false);
   // isLoggedIn: boolean = false;
   ngOnInit(): void {

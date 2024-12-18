@@ -1,4 +1,3 @@
-
 @use '@ngxpert/hot-toast/src/styles/styles.scss';
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 @tailwind base;
@@ -31,27 +30,6 @@ h1 {
   width: 100%;
 }
 
-/* @media (min-width: 1200px) {
-
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 1000px;
-  }
-}
-@media (min-width: 1400px) {
-
-  .container-xxl,
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 1400px;
-  }
-} */
 
 @media (min-width: 1920px) {
 
@@ -64,29 +42,6 @@ h1 {
 
   }
 }
-
-/* @media (min-width: 2560px) {
-
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 1920px;
-  }
-} */
-
-/* @media (min-width: 3840px) {
-
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 2300px;
-  }
-} */
-
 
 /* Biotef CSS */
 
@@ -402,153 +357,6 @@ h1 {
   background-color: #3cba58;
 }
 
-
-/* Full Primary Color */
-
-
-/*
-
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: #3cba58
-}
-
-.mat-primary .mat-pseudo-checkbox-checked,
-.mat-primary .mat-pseudo-checkbox-indeterminate {
-    background: #3cba58
-}
-
-.mat-badge-content {
-    background: #3cba58
-}
-
-.mat-button.mat-primary,
-.mat-icon-button.mat-primary,
-.mat-stroked-button.mat-primary {
-    color: #3cba58
-}
-
-.mat-button.mat-primary .mat-button-focus-overlay,
-.mat-icon-button.mat-primary .mat-button-focus-overlay,
-.mat-stroked-button.mat-primary .mat-button-focus-overlay {
-    background-color: #3cba58
-}
-
-.mat-flat-button.mat-primary,
-.mat-raised-button.mat-primary,
-.mat-fab.mat-primary,
-.mat-mini-fab.mat-primary {
-    background-color: #3cba58
-}
-
-.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background,
-.mat-checkbox-checked.mat-primary .mat-checkbox-background {
-    background-color: #3cba58
-}
-
-.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-primary .mat-ripple-element,
-.mat-checkbox:active:not(.mat-checkbox-disabled).mat-primary .mat-ripple-element {
-    background: #3cba58
-}
-
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
-    background-color: #3cba58;
-}
-
-.mat-calendar-body-selected {
-    background-color: #3cba58;
-}
-
-.mat-datepicker-toggle-active {
-    color: #3cba58
-}
-
-.mat-form-field.mat-focused .mat-form-field-label {
-    color: #3cba58
-}
-
-.mat-form-field.mat-focused .mat-form-field-ripple {
-    background-color: #3cba58
-}
-
-.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid) .mat-form-field-infix::after {
-    color: #3cba58
-}
-
-.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #3cba58
-}
-
-.mat-icon.mat-primary {
-    color: #3cba58
-}
-
-.mat-input-element {
-    caret-color: #3cba58
-}
-
-.mat-progress-bar-fill::after {
-    background-color: #3cba58
-}
-
-.mat-progress-spinner circle,
-.mat-spinner circle {
-    stroke: #3cba58
-}
-
-.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {
-    border-color: #3cba58
-}
-
-.mat-radio-button.mat-primary .mat-radio-inner-circle,
-.mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
-.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-persistent-ripple,
-.mat-radio-button.mat-primary:active .mat-radio-persistent-ripple {
-    background-color: #3cba58
-}
-
-.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-    color: #3cba58
-}
-
-.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
-    background-color: #3cba58
-}
-
-.mat-slide-toggle.mat-primary.mat-checked .mat-ripple-element {
-    background-color: #3cba58
-}
-
-.mat-primary .mat-slider-track-fill,
-.mat-primary .mat-slider-thumb,
-.mat-primary .mat-slider-thumb-label {
-    background-color: #3cba58
-}
-
-.mat-step-header .mat-step-icon-selected,
-.mat-step-header .mat-step-icon-state-done,
-.mat-step-header .mat-step-icon-state-edit {
-    background-color: #3cba58;
-}
-
-.mat-tab-group.mat-primary .mat-ink-bar,
-.mat-tab-nav-bar.mat-primary .mat-ink-bar {
-    background-color: #3cba58
-}
-
-.mat-tab-group.mat-background-primary>.mat-tab-header,
-.mat-tab-group.mat-background-primary>.mat-tab-link-container,
-.mat-tab-group.mat-background-primary>.mat-tab-header-pagination,
-.mat-tab-nav-bar.mat-background-primary>.mat-tab-header,
-.mat-tab-nav-bar.mat-background-primary>.mat-tab-link-container,
-.mat-tab-nav-bar.mat-background-primary>.mat-tab-header-pagination {
-    background-color: #3cba58
-}
-
-.mat-toolbar.mat-primary {
-    background: #3cba58;
-}
-
-*/
 
 /* Spinner */
 @keyframes spinner {

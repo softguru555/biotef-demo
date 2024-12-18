@@ -10,7 +10,14 @@ export class SignupService {
 
   constructor(private http: HttpClient) {}
 
-  signup(credentials: { email: string; password: string; phone: string; address: string; companyName: string; contactName: string }): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'/users/signup', credentials);
+  signup(credentials: {
+    email: string;
+    password: string;
+    phone: string;
+    address: string;
+    companyName: string;
+    contactName: string;
+  }): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/users/signup', credentials);
   }
 }
