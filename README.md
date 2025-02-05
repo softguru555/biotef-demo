@@ -72,7 +72,7 @@ To get started with the Angular frontend:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ganatan/angular-app.git
+git clone https://github.com/softguru555/biotef-demo
 cd angular-app/frontend-angular
 
 # Install dependencies and start the development server
@@ -159,9 +159,6 @@ Visit [http://localhost:9000](http://localhost:9000) in your browser.
 
 ---
 
-## Author
-
-- **Danny** - [Ganatan](https://www.ganatan.com)
 
 ## Documentation
 
